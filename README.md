@@ -1,5 +1,8 @@
 # OpenSK Firmware
 
+[![Current Version](https://img.shields.io/github/tag/makerdiary/OpenSK-firmware.svg)](https://github.com/makerdiary/OpenSK-firmware/tags)
+[![Build Firmware](https://github.com/makerdiary/OpenSK-firmware/actions/workflows/firmware.yml/badge.svg?branch=main)](https://github.com/makerdiary/OpenSK-firmware/actions/workflows/firmware.yml?query=branch%3Amain)
+
 This repository is used to release the latest [OpenSK](https://github.com/google/OpenSK/tree/develop) firmware for Makerdiary's nRF52840-based boards with UF2 Bootloader.
 
 ## Supported Hardware
