@@ -39,10 +39,16 @@ jobs:
         working-directory: OpenSK
         run: |
           ./deploy.py --board=nrf52840_mdk_dfu --opensk --programmer=none
-          uf2conv -c -f 0xada52840 -o target/opensk-dongle_nrf52840-${{ steps.get_version.outputs.VERSION }}.uf2 target/nrf52840_mdk_dfu_merged.hex
+          uf2conv -c -f 0xada52840 -o target/opensk-nrf52840_mdk_usb_dongle-${{ steps.get_version.outputs.VERSION }}.uf2 target/nrf52840_mdk_dfu_merged.hex
       - name: Upload firmware
         uses: actions/upload-artifact@v3
         with:
           name: opensk-firmware-${{ steps.get_version.outputs.VERSION }}
           path: |
-            OpenSK/target/opensk-dongle_nrf52840-${{ steps.get_version.outputs.VERSION }}.uf2
+            OpenSK/target/opensk-nrf52840_mdk_usb_dongle-${{ steps.get_version.outputs.VERSION }}.uf2
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        if: ${{ github.event_name == 'release' }}
+        with:
+          files: |
+            OpenSK/target/opensk-nrf52840_mdk_usb_dongle-${{ steps.get_version.outputs.VERSION }}.uf2
